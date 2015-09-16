@@ -24,7 +24,7 @@ public class Teacher extends Person {
                 newSub[k] = old[i];
             }
         }
-        newSub[old.length] = subject;
+        newSub[old.length-2] = subject;
         subjects = newSub;
     }
 
