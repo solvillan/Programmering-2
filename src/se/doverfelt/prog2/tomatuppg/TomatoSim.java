@@ -1,6 +1,7 @@
 package se.doverfelt.prog2.tomatuppg;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -30,6 +31,7 @@ public class TomatoSim {
 
     private void outputResults() {
         showMessage(mature.length + " tomatoes are mature.", "Result");
+        Arrays.sort(mature);
         String matureTomatoes = "";
         for (int i : mature) {
             matureTomatoes += i+1 + " ";
@@ -78,7 +80,7 @@ public class TomatoSim {
 
     private void getTime() {
         time = -1;
-        while (time == -1 || time < 3 || time > 100) {
+        while (time < 1) {
             time = getInt("Enter the number of days");
         }
     }
