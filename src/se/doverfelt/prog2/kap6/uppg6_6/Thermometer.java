@@ -1,4 +1,4 @@
-package se.doverfelt.prog2.kap6.uppg6_1;
+package se.doverfelt.prog2.kap6.uppg6_6;
 
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
