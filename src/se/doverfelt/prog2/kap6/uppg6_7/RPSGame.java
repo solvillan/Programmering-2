@@ -2,6 +2,8 @@ package se.doverfelt.prog2.kap6.uppg6_7;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
 
 /**
@@ -13,7 +15,10 @@ public class RPSGame extends JFrame {
 
     public JProgressBar progressBar;
     public JTextArea textField;
-    private boolean running = true;
+    public static boolean running = true;
+    public static RPSGame instance;
+    public ButtonsPane buttons;
+    public GameLogic g;
 
     public static void main(String[] args) {
         try {
@@ -27,7 +32,7 @@ public class RPSGame extends JFrame {
         } catch (IllegalAccessException e) {
             e.printStackTrace();
         }
-        SwingUtilities.invokeLater(RPSGame::new); //new RPSGame();
+        SwingUtilities.invokeLater(() -> instance = new RPSGame()); //new RPSGame();
     }
 
     private void createGUI() {
@@ -35,6 +40,9 @@ public class RPSGame extends JFrame {
         this.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
         progressBar = new JProgressBar(JProgressBar.VERTICAL);
+        progressBar.setMaximum(0);
+        progressBar.setMinimum(0);
+        progressBar.setName("Test");
         c.insets = new Insets(5, 5, 5, 5);
         c.anchor = GridBagConstraints.FIRST_LINE_START;
         c.fill = GridBagConstraints.VERTICAL;
@@ -49,6 +57,9 @@ public class RPSGame extends JFrame {
         textField = new JTextArea();
         textField.setColumns(40);
         textField.setRows(6);
+        JScrollPane spane = new JScrollPane(textField);
+        spane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        spane.setAutoscrolls(true);
         c.insets = new Insets(10, 0, 0, 10);
         c.fill = GridBagConstraints.HORIZONTAL;
         c.gridheight = 1;
@@ -57,10 +68,10 @@ public class RPSGame extends JFrame {
         c.weightx = 1;
         c.weighty = 0.5;
         c.ipadx = 40;
-        layout.setConstraints(textField, c);
-        this.add(textField);
+        layout.setConstraints(spane, c);
+        this.add(spane);
 
-        ButtonsPane buttons = new ButtonsPane();
+        buttons = new ButtonsPane();
         buttons.setVisible(true);
         c.fill = GridBagConstraints.VERTICAL;
         c.gridx = 1;
@@ -78,14 +89,34 @@ public class RPSGame extends JFrame {
 
     public RPSGame() {
         createGUI();
-        /*while (running) {
-            //textField.append(""  + Math.random());
-            repaint();
-            try {
-                Thread.sleep(100);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }*/
+        createListeners();
+        g = new GameLogic();
+        g.init(this);
+        Thread t = new Thread(g);
+        t.start();
+    }
+
+    public void print(String s) {
+        textField.append(s + "\n");
+        textField.setCaretPosition(textField.getDocument().getLength());
+    }
+
+    private void createListeners() {
+        buttons.paper.addActionListener(e -> {
+            g.buttonPressed(buttons.paper, e);
+            print("You choose paper.");
+        });
+        buttons.rock.addActionListener(e -> {
+            g.buttonPressed(buttons.rock, e);
+            print("You choose rock.");
+        });
+        buttons.scissors.addActionListener(e -> {
+            g.buttonPressed(buttons.scissors, e);
+            print("You choose scissors.");
+        });
+    }
+
+    public void clear() {
+        textField.setText("");
     }
 }
