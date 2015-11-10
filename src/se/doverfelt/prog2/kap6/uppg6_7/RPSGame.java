@@ -2,6 +2,7 @@ package se.doverfelt.prog2.kap6.uppg6_7;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 
 /**
  * @author Rickard Doverfelt
@@ -12,6 +13,7 @@ public class RPSGame extends JFrame {
 
     public JProgressBar progressBar;
     public JTextArea textField;
+    private boolean running = true;
 
     public static void main(String[] args) {
         try {
@@ -28,7 +30,7 @@ public class RPSGame extends JFrame {
         SwingUtilities.invokeLater(RPSGame::new); //new RPSGame();
     }
 
-    public RPSGame() {
+    private void createGUI() {
         GridBagLayout layout = new GridBagLayout();
         this.setLayout(layout);
         GridBagConstraints c = new GridBagConstraints();
@@ -74,4 +76,16 @@ public class RPSGame extends JFrame {
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     }
 
+    public RPSGame() {
+        createGUI();
+        /*while (running) {
+            //textField.append(""  + Math.random());
+            repaint();
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }*/
+    }
 }
