@@ -2,9 +2,6 @@ package se.doverfelt.prog2.kap6.uppg6_7;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.WindowEvent;
 
 /**
  * @author Rickard Doverfelt
@@ -42,7 +39,7 @@ public class RPSGame extends JFrame {
         progressBar = new JProgressBar(JProgressBar.VERTICAL);
         progressBar.setMaximum(0);
         progressBar.setMinimum(0);
-        progressBar.setName("Test");
+        progressBar.setStringPainted(true);
         c.insets = new Insets(5, 5, 5, 5);
         c.anchor = GridBagConstraints.FIRST_LINE_START;
         c.fill = GridBagConstraints.VERTICAL;
@@ -57,6 +54,7 @@ public class RPSGame extends JFrame {
         textField = new JTextArea();
         textField.setColumns(40);
         textField.setRows(6);
+        textField.setEditable(false);
         JScrollPane spane = new JScrollPane(textField);
         spane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         spane.setAutoscrolls(true);
