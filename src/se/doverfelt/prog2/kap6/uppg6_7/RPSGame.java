@@ -82,7 +82,7 @@ public class RPSGame extends JFrame {
         this.pack();
         this.setVisible(true);
         this.setEnabled(true);
-        this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
     }
 
     public RPSGame() {
