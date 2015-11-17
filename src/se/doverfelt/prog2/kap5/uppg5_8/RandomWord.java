@@ -3,6 +3,7 @@ package se.doverfelt.prog2.kap5.uppg5_8;
 import javax.swing.*;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Random;
 import java.util.Scanner;
@@ -26,6 +27,13 @@ public class RandomWord {
             JOptionPane.showMessageDialog(null, "File does not exist...");
             System.exit(404);
         }
+        while (scanner.hasNextLine()) {
+            words.add(scanner.nextLine());
+        }
+    }
+
+    public RandomWord(InputStream in) {
+        Scanner scanner = new Scanner(in);
         while (scanner.hasNextLine()) {
             words.add(scanner.nextLine());
         }
