@@ -1,8 +1,6 @@
 package se.doverfelt.prog2.robotRiot;
 
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * Filnamn: PathFinder.java
@@ -66,13 +64,10 @@ public class PathFinder implements Runnable {
                 }
                 if (pos[0]-1 == -1 || pos[0]+1 == m+1 || pos[1]-1 == -1 || pos[1]+1 == n+1) {
                     escaped = true;
-                    //System.out.println("Escaped!");
                 }
             }
             if (!escaped) {
-                //System.out.println(Arrays.deepToString(tmp.toArray()));
                 toCheck = new ArrayList<>(tmp);
-                //toCheck.addAll(tmp);
             }
         }
     }

@@ -52,7 +52,6 @@ public class RobotRiot {
     }
 
     private void findPath(int x, int y, int n, int m) {
-        //System.out.println("Should find path for " + x + "; " + y);
         PathFinder pf = new PathFinder(tiles, x, y, n, m);
         pathFinders.add(pf);
         pf.start();
@@ -66,15 +65,12 @@ public class RobotRiot {
                 switch (chars[j]) {
                     case ".":
                         tiles[i][j] = EnumTile.FLOOR;
-                        //System.out.println("FLOOR");
                         break;
                     case "#":
                         tiles[i][j] = EnumTile.WALL;
-                        //System.out.println("WALL");
                         break;
                     case "X":
                         tiles[i][j] = EnumTile.ROBOT;
-                        //System.out.println("ROBOT");
                         break;
                 }
             }
