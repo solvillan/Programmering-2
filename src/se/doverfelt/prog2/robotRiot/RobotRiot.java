@@ -14,6 +14,20 @@ public class RobotRiot {
 
     public RobotRiot(int n, int m, String[] lines) {
         parseTiles(n, m, lines);
+        for (int x = 0; x < n; x++) {
+            for (int y = 0; y < m; y++) {
+                if (tiles[x][y] == EnumTile.ROBOT) {
+                    findPath(x, y);
+                }
+            }
+        }
+    }
+
+    private void findPath(int x, int y) {
+        System.out.println("Should find path for " + x + "; " + y);
+        PathFinder pf = new PathFinder(tiles, x, y);
+        Thread t = new Thread(pf);
+        t.start();
     }
 
     private void parseTiles(int n, int m, String[] lines) {
@@ -24,15 +38,15 @@ public class RobotRiot {
                 switch (chars[j]) {
                     case ".":
                         tiles[i][j] = EnumTile.FLOOR;
-                        System.out.println("FLOOR");
+                        //System.out.println("FLOOR");
                         break;
                     case "#":
                         tiles[i][j] = EnumTile.WALL;
-                        System.out.println("WALL");
+                        //System.out.println("WALL");
                         break;
                     case "X":
                         tiles[i][j] = EnumTile.ROBOT;
-                        System.out.println("ROBOT");
+                        //System.out.println("ROBOT");
                         break;
                 }
             }
@@ -41,9 +55,9 @@ public class RobotRiot {
 
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
-        int n = s.nextInt();
-        int m = s.nextInt();
-        s.nextLine();
+        String[] in = s.nextLine().split(" ");
+        int n = Integer.parseInt(in[0]);
+        int m = Integer.parseInt(in[1]);
         String[] lines = new String[n];
         for (int i = 0; i < n; i++) {
             lines[i] = s.nextLine();

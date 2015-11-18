@@ -7,5 +7,5 @@ package se.doverfelt.prog2.robotRiot;
  *         Datum: 2015-11-18
  */
 public enum EnumTile {
-    FLOOR, WALL, ROBOT;
+    FLOOR, WALL, ROBOT
 }
