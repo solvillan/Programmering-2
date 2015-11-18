@@ -2,6 +2,7 @@ package se.doverfelt.prog2.robotRiot;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 
 /**
  * Filnamn: PathFinder.java
@@ -13,8 +14,9 @@ public class PathFinder implements Runnable {
 
     private static int x, y, n, m;
     private static EnumTile[][] tiles;
-    private static ArrayList<String> checked = new ArrayList<>() , toCheck = new ArrayList<>();
-    private static boolean escaped = false;
+    private ArrayList<String> checked = new ArrayList<>() , toCheck = new ArrayList<>();
+    public boolean escaped = false;
+    public Thread t;
 
     public PathFinder(EnumTile[][] tilesOrig, int xIn, int yIn, int nIn, int mIn) {
         tiles = tilesOrig;
@@ -22,9 +24,8 @@ public class PathFinder implements Runnable {
         y = yIn;
         n = nIn;
         m = mIn;
+        t = new Thread(this, "Pathfinder-"+x+";"+y);
         placeCheckPos(x, y);
-        Thread t = new Thread(this);
-        t.start();
     }
 
     private static int[] parsePos(String pos) {
@@ -32,7 +33,7 @@ public class PathFinder implements Runnable {
         return new int[]{Integer.parseInt(positions[0]), Integer.parseInt(positions[1])};
     }
 
-    private static void placeCheckPos(int x, int y) {
+    private void placeCheckPos(int x, int y) {
         toCheck.add(x+";"+y);
     }
 
@@ -41,27 +42,43 @@ public class PathFinder implements Runnable {
         while (!escaped && !toCheck.isEmpty()) {
             ArrayList<String> tmp = new ArrayList<>();
             for (String s : toCheck) {
-                toCheck.remove(s);
                 checked.add(s);
                 int [] pos = parsePos(s);
-                if (tiles[pos[0]-1][pos[1]] == EnumTile.FLOOR && !toCheck.contains((pos[0]-1)+";"+pos[1]) && !checked.contains((pos[0]-1)+";"+pos[1])) {
-                    tmp.add((pos[0]-1)+";"+pos[1]);
+                if (pos[0]-1 >= 0) {
+                    if ((tiles[pos[0]-1][pos[1]] == EnumTile.FLOOR || tiles[pos[0]-1][pos[1]] == EnumTile.ROBOT) && !toCheck.contains((pos[0]-1)+";"+pos[1]) && !checked.contains((pos[0]-1)+";"+pos[1])) {
+                        tmp.add((pos[0]-1)+";"+pos[1]);
+                    }
                 }
-                if (tiles[pos[0]+1][pos[1]] == EnumTile.FLOOR && !toCheck.contains((pos[0]+1)+";"+pos[1]) && !checked.contains((pos[0]+1)+";"+pos[1])) {
-                    tmp.add((pos[0]+1)+";"+pos[1]);
+                if (pos[0]+1 <= n-1) {
+                    if ((tiles[pos[0]+1][pos[1]] == EnumTile.FLOOR || tiles[pos[0]+1][pos[1]] == EnumTile.ROBOT) && !toCheck.contains((pos[0]+1)+";"+pos[1]) && !checked.contains((pos[0]+1)+";"+pos[1])) {
+                        tmp.add((pos[0]+1)+";"+pos[1]);
+                    }
                 }
-                if (tiles[pos[0]][pos[1]-1] == EnumTile.FLOOR && !toCheck.contains((pos[0])+";"+(pos[1]-1)) && !checked.contains((pos[0])+";"+(pos[1]-1))) {
-                    tmp.add((pos[0])+";"+(pos[1]-1));
+                if (pos[1]-1 >= 0) {
+                    if ((tiles[pos[0]][pos[1]-1] == EnumTile.FLOOR || tiles[pos[0]][pos[1]-1] == EnumTile.ROBOT) && !toCheck.contains((pos[0])+";"+(pos[1]-1)) && !checked.contains((pos[0])+";"+(pos[1]-1))) {
+                        tmp.add((pos[0])+";"+(pos[1]-1));
+                    }
                 }
-                if (tiles[pos[0]][pos[1]+1] == EnumTile.FLOOR && !toCheck.contains((pos[0])+";"+(pos[1]+1)) && !checked.contains((pos[0])+";"+(pos[1]+1))) {
-                    tmp.add((pos[0])+";"+(pos[1]+1));
+                if (pos[1]+1 <= m-1) {
+                    if ((tiles[pos[0]][pos[1]+1] == EnumTile.FLOOR || tiles[pos[0]][pos[1]+1] == EnumTile.ROBOT) && !toCheck.contains((pos[0])+";"+(pos[1]+1)) && !checked.contains((pos[0])+";"+(pos[1]+1))) {
+                        tmp.add((pos[0])+";"+(pos[1]+1));
+                    }
                 }
-                if (pos[0]-1 == 0 || pos[0]+1 == m || pos[1]-1 == 1 || pos[1]+1 == n) {
+                if (pos[0]-1 == -1 || pos[0]+1 == m+1 || pos[1]-1 == -1 || pos[1]+1 == n+1) {
                     escaped = true;
-                    System.out.println("Escaped!");
+                    //System.out.println("Escaped!");
                 }
             }
-            toCheck.addAll(tmp);
+            if (!escaped) {
+                //System.out.println(Arrays.deepToString(tmp.toArray()));
+                toCheck = new ArrayList<>(tmp);
+                //toCheck.addAll(tmp);
+            }
         }
+    }
+
+    public void start() {
+        t.checkAccess();
+        t.start();
     }
 }

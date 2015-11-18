@@ -1,5 +1,6 @@
 package se.doverfelt.prog2.robotRiot;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -11,6 +12,8 @@ import java.util.Scanner;
 public class RobotRiot {
 
     public static EnumTile[][] tiles;
+    private static ArrayList<PathFinder> pathFinders = new ArrayList<>();
+    private static long timeStamp;
 
     public RobotRiot(int n, int m, String[] lines) {
         parseTiles(n, m, lines);
@@ -21,11 +24,38 @@ public class RobotRiot {
                 }
             }
         }
+        while (!isFinished()) {
+
+        }
+        boolean result = false;
+        for (PathFinder pathFinder : pathFinders) {
+            result = result || pathFinder.escaped;
+        }
+        if (result) {
+            System.out.println("Death to humans");
+        } else {
+            System.out.println("We are safe");
+        }
+        System.out.println(System.currentTimeMillis()-timeStamp);
+    }
+
+    private boolean isFinished() {
+        if (pathFinders.isEmpty()) {
+            return false;
+        } else {
+            boolean out = true;
+            for (PathFinder pathFinder : pathFinders) {
+                out = out && !pathFinder.t.isAlive();
+            }
+            return out;
+        }
     }
 
     private void findPath(int x, int y, int n, int m) {
-        System.out.println("Should find path for " + x + "; " + y);
+        //System.out.println("Should find path for " + x + "; " + y);
         PathFinder pf = new PathFinder(tiles, x, y, n, m);
+        pathFinders.add(pf);
+        pf.start();
     }
 
     private void parseTiles(int n, int m, String[] lines) {
@@ -60,6 +90,7 @@ public class RobotRiot {
         for (int i = 0; i < n; i++) {
             lines[i] = s.nextLine();
         }
+        timeStamp = System.currentTimeMillis();
         new RobotRiot(n, m, lines);
     }
 }
