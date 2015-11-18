@@ -17,17 +17,15 @@ public class RobotRiot {
         for (int x = 0; x < n; x++) {
             for (int y = 0; y < m; y++) {
                 if (tiles[x][y] == EnumTile.ROBOT) {
-                    findPath(x, y);
+                    findPath(x, y, n, m);
                 }
             }
         }
     }
 
-    private void findPath(int x, int y) {
+    private void findPath(int x, int y, int n, int m) {
         System.out.println("Should find path for " + x + "; " + y);
-        PathFinder pf = new PathFinder(tiles, x, y);
-        Thread t = new Thread(pf);
-        t.start();
+        PathFinder pf = new PathFinder(tiles, x, y, n, m);
     }
 
     private void parseTiles(int n, int m, String[] lines) {
