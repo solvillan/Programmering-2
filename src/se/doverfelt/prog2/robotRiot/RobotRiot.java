@@ -14,6 +14,7 @@ public class RobotRiot {
     public static EnumTile[][] tiles;
     private static ArrayList<PathFinder> pathFinders = new ArrayList<>();
     private static long timeStamp;
+    private boolean hasRobots = false;
 
     public RobotRiot(int n, int m, String[] lines) {
         parseTiles(n, m, lines);
@@ -21,10 +22,11 @@ public class RobotRiot {
             for (int y = 0; y < m; y++) {
                 if (tiles[x][y] == EnumTile.ROBOT) {
                     findPath(x, y, n, m);
+                    hasRobots = true;
                 }
             }
         }
-        while (!isFinished()) {
+        while (!isFinished() && hasRobots) {
 
         }
         boolean result = false;
