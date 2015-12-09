@@ -19,9 +19,9 @@ public class GameChooser extends JFrame {
     public GameChooser(Game21 game) {
         this.game = game;
 
-        this.setLayout(new FlowLayout(FlowLayout.TRAILING));
+        this.setLayout(new GridBagLayout());
 
-        buttons = new JPanel(new FlowLayout());
+        buttons = new JPanel(new FlowLayout(FlowLayout.TRAILING));
 
         easy = new JButton("Easy computer");
         easy.addActionListener(e -> {
@@ -46,7 +46,7 @@ public class GameChooser extends JFrame {
 
         JLabel splash = null;
         try {
-            splash = new JLabel(new ImageIcon(new URL("http", "howtodoinjava.com", "/wp-content/uploads/splash-screen.jpg")));
+            splash = new JLabel(new ImageIcon(new URL("http", "rockstartemplate.com", "/blogheaders/bannerdesign2.jpg")));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
