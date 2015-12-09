@@ -1,9 +1,9 @@
-package se.doverfelt.prog2.game21;
+package se.doverfelt.prog2.game21.logic;
 
 /**
  * Created by rickard.doverfelt on 2015-12-08.
  */
-public class HardLogic implements Logic {
+public class PVPLogic implements Logic {
 
     @Override
     public void update() {

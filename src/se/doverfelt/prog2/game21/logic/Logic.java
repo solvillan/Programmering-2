@@ -1,4 +1,4 @@
-package se.doverfelt.prog2.game21;
+package se.doverfelt.prog2.game21.logic;
 
 /**
  * Created by rickard.doverfelt on 2015-12-09.

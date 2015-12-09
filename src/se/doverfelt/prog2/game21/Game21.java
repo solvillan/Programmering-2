@@ -1,5 +1,10 @@
 package se.doverfelt.prog2.game21;
 
+import se.doverfelt.prog2.game21.logic.EasyLogic;
+import se.doverfelt.prog2.game21.logic.HardLogic;
+import se.doverfelt.prog2.game21.logic.Logic;
+import se.doverfelt.prog2.game21.logic.PVPLogic;
+
 /**
  * Created by rickard.doverfelt on 2015-12-08.
  */
@@ -25,7 +30,7 @@ public class Game21 {
         } else if (mode == EnumMode.PVP) {
             logic = new PVPLogic();
         }
-        new GameView(mode);
+        new GameView(mode, this);
     }
 
     public static void main(String[] args) {
