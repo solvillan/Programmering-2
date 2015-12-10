@@ -5,6 +5,11 @@ import se.doverfelt.prog2.game21.logic.HardLogic;
 import se.doverfelt.prog2.game21.logic.Logic;
 import se.doverfelt.prog2.game21.logic.PVPLogic;
 
+import java.awt.*;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseMotionAdapter;
+
 /**
  * Created by rickard.doverfelt on 2015-12-08.
  */
@@ -15,6 +20,7 @@ public class Game21 {
 
     public Game21() {
         new GameChooser(this);
+
     }
 
     public Logic getLogic() {

@@ -6,6 +6,11 @@ package se.doverfelt.prog2.game21.logic;
 public class EasyLogic implements Logic {
 
     @Override
+    public void init() {
+
+    }
+
+    @Override
     public void update() {
 
     }

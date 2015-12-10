@@ -5,6 +5,7 @@ package se.doverfelt.prog2.game21.logic;
  */
 public interface Logic {
 
+    void init();
     void update();
     int getScore();
     boolean hasWon();
