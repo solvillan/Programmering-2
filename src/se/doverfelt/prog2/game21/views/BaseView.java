@@ -10,8 +10,8 @@ import javax.swing.*;
  */
 public abstract class BaseView extends JPanel implements IView {
 
-    private final GameView gameView;
-    private final Logic logic;
+    public final GameView gameView;
+    public final Logic logic;
 
     public BaseView(GameView gameView) {
         this.gameView = gameView;

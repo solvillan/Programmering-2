@@ -1,23 +1,36 @@
 package se.doverfelt.prog2.game21.logic;
 
+import se.doverfelt.prog2.game21.views.BaseView;
+import se.doverfelt.prog2.game21.views.PVPView;
+
 /**
  * Created by rickard.doverfelt on 2015-12-08.
  */
 public class PVPLogic implements Logic {
 
-    @Override
-    public void init() {
+    private PVPView view;
+    private int score = 0;
 
+    @Override
+    public void init(BaseView view) {
+        if (view instanceof PVPView) {
+            this.view = (PVPView) view;
+        } else {
+            System.err.println("Something impossible happened...");
+            System.exit(-101);
+        }
     }
 
     @Override
     public void update() {
-
+        score++;
+        //Do not remove! Updates graphics, should be last call in method
+        view.update();
     }
 
     @Override
     public int getScore() {
-        return 0;
+        return score;
     }
 
     @Override

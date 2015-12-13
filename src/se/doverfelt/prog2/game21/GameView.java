@@ -25,6 +25,11 @@ public class GameView extends JFrame{
             initPVPWindow();
         }
         this.setLocationRelativeTo(null);
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+    }
+
+    public BaseView getMainView() {
+        return mainView;
     }
 
     private void initPVPWindow() {
