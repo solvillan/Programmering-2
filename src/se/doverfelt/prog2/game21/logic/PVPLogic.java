@@ -10,6 +10,13 @@ public class PVPLogic implements Logic {
 
     private PVPView view;
     private int score = 0;
+    private int mod;
+    private boolean won = false;
+
+    @Override
+    public void setMod(int mod) {
+        this.mod = mod;
+    }
 
     @Override
     public void init(BaseView view) {
@@ -23,7 +30,10 @@ public class PVPLogic implements Logic {
 
     @Override
     public void update() {
-        score++;
+        score += mod;
+
+        won = score == 21;
+
         //Do not remove! Updates graphics, should be last call in method
         view.update();
     }
@@ -35,6 +45,6 @@ public class PVPLogic implements Logic {
 
     @Override
     public boolean hasWon() {
-        return false;
+        return won;
     }
 }

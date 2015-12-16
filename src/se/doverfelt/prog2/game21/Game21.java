@@ -5,6 +5,8 @@ import se.doverfelt.prog2.game21.logic.HardLogic;
 import se.doverfelt.prog2.game21.logic.Logic;
 import se.doverfelt.prog2.game21.logic.PVPLogic;
 
+import javax.swing.*;
+
 /**
  * Created by rickard.doverfelt on 2015-12-08.
  */
@@ -12,9 +14,10 @@ public class Game21 {
 
     private EnumMode mode;
     private Logic logic;
+    public GameChooser chooser;
 
     public Game21() {
-        new GameChooser(this);
+        chooser = new GameChooser(this);
 
     }
 
@@ -36,6 +39,19 @@ public class Game21 {
     }
 
     public static void main(String[] args) {
+
+        try {
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
         new Game21();
     }
 

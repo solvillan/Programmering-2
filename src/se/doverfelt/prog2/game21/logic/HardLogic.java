@@ -11,6 +11,11 @@ public class HardLogic implements Logic {
     private HardView view;
 
     @Override
+    public void setMod(int mod) {
+
+    }
+
+    @Override
     public void init(BaseView view) {
         if (view instanceof HardView) {
             this.view = (HardView) view;
