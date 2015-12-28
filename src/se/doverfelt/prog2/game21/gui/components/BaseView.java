@@ -1,6 +1,5 @@
-package se.doverfelt.prog2.game21.views;
+package se.doverfelt.prog2.game21.gui.components;
 
-import se.doverfelt.prog2.game21.GameView;
 import se.doverfelt.prog2.game21.logic.Logic;
 
 import javax.swing.*;

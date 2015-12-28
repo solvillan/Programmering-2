@@ -1,12 +1,10 @@
-package se.doverfelt.prog2.game21.views;
+package se.doverfelt.prog2.game21.gui.views;
 
-import se.doverfelt.prog2.game21.GameView;
-import se.doverfelt.prog2.game21.logic.Logic;
+import se.doverfelt.prog2.game21.gui.components.BaseView;
+import se.doverfelt.prog2.game21.gui.components.GameView;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 /**
  * Created by rickard.doverfelt on 2015-12-09.

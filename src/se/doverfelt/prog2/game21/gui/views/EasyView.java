@@ -1,7 +1,8 @@
-package se.doverfelt.prog2.game21.views;
+package se.doverfelt.prog2.game21.gui.views;
 
-import se.doverfelt.prog2.game21.GameView;
-import se.doverfelt.prog2.game21.logic.HardLogic;
+import se.doverfelt.prog2.game21.gui.components.BaseView;
+import se.doverfelt.prog2.game21.gui.components.GameView;
+import se.doverfelt.prog2.game21.logic.EasyLogic;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,14 +11,14 @@ import java.util.Random;
 /**
  * Created by rickard.doverfelt on 2015-12-09.
  */
-public class HardView extends BaseView {
+public class EasyView extends BaseView {
     public final JLabel label = new JLabel("Player");
     private JProgressBar progress;
     public JButton p11, p12;
     public boolean isPlayer = true;
     private SwingWorker updater;
 
-    public HardView(GameView gameView) {
+    public EasyView(GameView gameView) {
         super(gameView);
 
         BorderLayout layout = new BorderLayout();
@@ -64,11 +65,11 @@ public class HardView extends BaseView {
         // Buttons
         this.add(buttons, BorderLayout.CENTER);
 
-        ((HardLogic)logic).view = this;
+        ((EasyLogic)logic).view = this;
 
         Random rand = new Random();
         if ((Math.abs(rand.nextInt() % 2)) == 1) {
-            ((HardLogic)logic).doComputer(true);
+            ((EasyLogic)logic).doComputer(true);
         }
 
     }

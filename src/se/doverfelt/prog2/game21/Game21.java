@@ -1,5 +1,6 @@
 package se.doverfelt.prog2.game21;
 
+import se.doverfelt.prog2.game21.gui.components.GameView;
 import se.doverfelt.prog2.game21.logic.EasyLogic;
 import se.doverfelt.prog2.game21.logic.HardLogic;
 import se.doverfelt.prog2.game21.logic.Logic;

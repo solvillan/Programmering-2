@@ -1,10 +1,10 @@
 package se.doverfelt.prog2.game21;
 
+import se.doverfelt.prog2.game21.gui.components.MenuButton;
+
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseMotionAdapter;
+import java.awt.event.*;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -47,21 +47,27 @@ public class GameChooser extends JFrame {
             this.add(new JLabel(""), i);
         }
 
-        easy = new JButton("Easy computer");
+        MenuButton quit = new MenuButton("Quit");
+        quit.setForeground(new Color(72, 72, 72));
+        quit.setRightAligned(true);
+        quit.addActionListener(e -> System.exit(0));
+        this.add(quit, 3);
+
+        easy = new MenuButton("Easy computer");
         easy.addActionListener(e -> {
             game.startGame(EnumMode.COMP_EASY);
             GameChooser.this.setVisible(false);
         });
         this.add(easy, 8);
 
-        hard = new JButton("Hard computer");
+        hard = new MenuButton("Hard computer");
         hard.addActionListener(e -> {
             game.startGame(EnumMode.COMP_HARD);
             this.setVisible(false);
         });
         this.add(hard, 12);
 
-        pvp = new JButton("Player vs. Player");
+        pvp = new MenuButton("Player vs. Player");
         pvp.addActionListener(e -> {
             game.startGame(EnumMode.PVP);
             this.setVisible(false);

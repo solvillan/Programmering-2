@@ -1,9 +1,10 @@
-package se.doverfelt.prog2.game21;
+package se.doverfelt.prog2.game21.gui.components;
 
-import se.doverfelt.prog2.game21.views.BaseView;
-import se.doverfelt.prog2.game21.views.EasyView;
-import se.doverfelt.prog2.game21.views.HardView;
-import se.doverfelt.prog2.game21.views.PVPView;
+import se.doverfelt.prog2.game21.EnumMode;
+import se.doverfelt.prog2.game21.Game21;
+import se.doverfelt.prog2.game21.gui.views.EasyView;
+import se.doverfelt.prog2.game21.gui.views.HardView;
+import se.doverfelt.prog2.game21.gui.views.PVPView;
 
 import javax.swing.*;
 

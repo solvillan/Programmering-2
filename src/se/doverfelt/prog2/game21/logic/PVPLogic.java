@@ -1,7 +1,7 @@
 package se.doverfelt.prog2.game21.logic;
 
-import se.doverfelt.prog2.game21.views.BaseView;
-import se.doverfelt.prog2.game21.views.PVPView;
+import se.doverfelt.prog2.game21.gui.components.BaseView;
+import se.doverfelt.prog2.game21.gui.views.PVPView;
 
 /**
  * Created by rickard.doverfelt on 2015-12-08.
