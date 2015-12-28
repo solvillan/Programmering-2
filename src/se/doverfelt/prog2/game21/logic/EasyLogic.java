@@ -3,17 +3,14 @@ package se.doverfelt.prog2.game21.logic;
 import se.doverfelt.prog2.game21.views.BaseView;
 import se.doverfelt.prog2.game21.views.EasyView;
 
-import javax.swing.*;
-import java.lang.reflect.InvocationTargetException;
 import java.util.Random;
-import java.util.concurrent.ThreadFactory;
 
 /**
  * Created by rickard.doverfelt on 2015-12-08.
  */
 public class EasyLogic implements Logic {
 
-    private EasyView view;
+    public EasyView view;
     private int mod;
     private int score;
     private boolean won;
@@ -34,39 +31,52 @@ public class EasyLogic implements Logic {
         }
     }
 
-    @Override
-    public void update() {
+    private void doPlayer() {
         score += mod;
         view.label.setText("Computer");
+        won = score >= 21;
         view.update();
+    }
 
+    public void doComputer(boolean isFirst) {
         mod = (Math.abs(rand.nextInt() % 2)) + 1;
         System.out.println(mod);
-        if (mod == 1) {
-            view.p11.setEnabled(true);
-        } else {
-            view.p12.setEnabled(true);
-        }
-        view.repaint();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        view.p11.setEnabled(false);
-        view.p12.setEnabled(false);
-        view.repaint();
-        try {
-            Thread.sleep(500);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+        if (!isFirst) {
+            if (mod == 1) {
+                view.p11.setEnabled(true);
+            } else {
+                view.p12.setEnabled(true);
+            }
+            view.repaint();
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            view.p11.setEnabled(false);
+            view.p12.setEnabled(false);
+            view.repaint();
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            view.isPlayer = true;
+            view.label.setText("Player");
         }
         score += mod;
-
-        //Do not remove! Updates graphics, should be last call in method
-        view.isPlayer = true;
-        view.label.setText("Player");
+        won = score >= 21;
         view.update();
+    }
+
+    @Override
+    public void update() {
+
+        doPlayer();
+
+        if (won) return;
+
+        doComputer(false);
     }
 
     @Override

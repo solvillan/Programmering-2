@@ -22,7 +22,7 @@ public class GameChooser extends JFrame {
         this.setUndecorated(true);
         this.game = game;
         try {
-            splash = new ImageIcon(new URL("http", "hdwallpapershub.net", "/wallpapers/m/112/dice_monochrome_m111508.jpg"));
+            splash = new ImageIcon(new URL("http", "www.psdgraphics.com", "/wp-content/uploads/2015/06/mosaic-background.png"));
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
@@ -42,28 +42,31 @@ public class GameChooser extends JFrame {
             }
         });
 
-        this.setLayout(new FlowLayout());
+        this.setLayout(new GridLayout(5, 3));
+        for (int i = 0; i < 15; i++) {
+            this.add(new JLabel(""), i);
+        }
 
         easy = new JButton("Easy computer");
         easy.addActionListener(e -> {
             game.startGame(EnumMode.COMP_EASY);
             GameChooser.this.setVisible(false);
         });
-        this.add(easy);
+        this.add(easy, 8);
 
         hard = new JButton("Hard computer");
         hard.addActionListener(e -> {
             game.startGame(EnumMode.COMP_HARD);
             this.setVisible(false);
         });
-        this.add(hard);
+        this.add(hard, 12);
 
         pvp = new JButton("Player vs. Player");
         pvp.addActionListener(e -> {
             game.startGame(EnumMode.PVP);
             this.setVisible(false);
         });
-        this.add(pvp);
+        this.add(pvp, 16);
 
         this.setSize(splash.getIconWidth(), splash.getIconHeight());
         this.repaint();

@@ -1,9 +1,11 @@
 package se.doverfelt.prog2.game21.views;
 
 import se.doverfelt.prog2.game21.GameView;
+import se.doverfelt.prog2.game21.logic.EasyLogic;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 /**
  * Created by rickard.doverfelt on 2015-12-09.
@@ -62,6 +64,12 @@ public class EasyView extends BaseView {
         // Buttons
         this.add(buttons, BorderLayout.CENTER);
 
+        ((EasyLogic)logic).view = this;
+
+        Random rand = new Random();
+        if ((Math.abs(rand.nextInt() % 2)) == 1) {
+            ((EasyLogic)logic).doComputer(true);
+        }
 
     }
 

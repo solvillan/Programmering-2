@@ -26,6 +26,9 @@ public class GameView extends JFrame{
         }
         this.setLocationRelativeTo(null);
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+
+        this.setSize(400, 300);
+
     }
 
     public BaseView getMainView() {
@@ -35,14 +38,12 @@ public class GameView extends JFrame{
     private void initPVPWindow() {
         mainView = new PVPView(this);
         this.add(mainView);
-        this.pack();
         this.setVisible(true);
     }
 
     private void initPVCWindow(EnumMode mode) {
         mainView = mode == EnumMode.COMP_EASY ? new EasyView(this) : new HardView(this);
         this.add(mainView);
-        this.pack();
         this.setVisible(true);
     }
 
