@@ -6,7 +6,9 @@ import se.doverfelt.prog2.game21.gui.views.EasyView;
 import java.util.Random;
 
 /**
- * Created by rickard.doverfelt on 2015-12-08.
+ * File Name:   EasyLogic.java
+ * Author:      Rickard Doverfelt
+ * Class:       TE21 / TI2
  */
 public class EasyLogic implements Logic {
 

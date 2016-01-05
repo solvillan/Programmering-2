@@ -9,8 +9,11 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 /**
- * Created by rickard.doverfelt on 2015-12-08.
+ * File Name:   GameChooser.java
+ * Author:      Rickard Doverfelt
+ * Class:       TE21 / TI2
  */
+
 public class GameChooser extends JFrame {
 
     private JButton easy, hard, pvp;
@@ -67,7 +70,7 @@ public class GameChooser extends JFrame {
         });
         this.add(hard, 12);
 
-        pvp = new MenuButton("Player vs. Player");
+        pvp = new MenuButton("PVP");
         pvp.addActionListener(e -> {
             game.startGame(EnumMode.PVP);
             this.setVisible(false);

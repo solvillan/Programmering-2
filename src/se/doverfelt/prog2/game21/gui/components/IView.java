@@ -1,7 +1,9 @@
 package se.doverfelt.prog2.game21.gui.components;
 
 /**
- * Created by rickard.doverfelt on 2015-12-09.
+ * File Name:   IView.java
+ * Author:      Rickard Doverfelt
+ * Class:       TE21 / TI2
  */
 public interface IView {
     void update();

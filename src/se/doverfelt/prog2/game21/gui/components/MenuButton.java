@@ -7,7 +7,9 @@ import java.awt.event.MouseEvent;
 import java.util.HashMap;
 
 /**
- * Created by Rickard on 2015-12-28.
+ * File Name:   MenuButton.java
+ * Author:      Rickard Doverfelt
+ * Class:       TE21 / TI2
  */
 public class MenuButton extends JButton {
 

@@ -7,7 +7,9 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by rickard.doverfelt on 2015-12-09.
+ * File Name:   PVPView.java
+ * Author:      Rickard Doverfelt
+ * Class:       TE21 / TI2
  */
 public class PVPView extends BaseView {
 

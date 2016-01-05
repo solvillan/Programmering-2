@@ -4,7 +4,9 @@ import se.doverfelt.prog2.game21.gui.components.BaseView;
 import se.doverfelt.prog2.game21.gui.views.PVPView;
 
 /**
- * Created by rickard.doverfelt on 2015-12-08.
+ * File Name:   PVPLogic.java
+ * Author:      Rickard Doverfelt
+ * Class:       TE21 / TI2
  */
 public class PVPLogic implements Logic {
 

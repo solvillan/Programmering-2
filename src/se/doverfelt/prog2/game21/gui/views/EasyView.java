@@ -9,7 +9,9 @@ import java.awt.*;
 import java.util.Random;
 
 /**
- * Created by rickard.doverfelt on 2015-12-09.
+ * File Name:   EasyView.java
+ * Author:      Rickard Doverfelt
+ * Class:       TE21 / TI2
  */
 public class EasyView extends BaseView {
     public final JLabel label = new JLabel("Player");
