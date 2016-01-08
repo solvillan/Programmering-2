@@ -7,6 +7,7 @@ import se.doverfelt.prog2.game21.logic.Logic;
 import se.doverfelt.prog2.game21.logic.PVPLogic;
 
 import javax.swing.*;
+import java.lang.reflect.InvocationTargetException;
 
 /**
  * File Name:   Game21.java
@@ -21,8 +22,13 @@ public class Game21 {
     public GameChooser chooser;
 
     public Game21() {
-        chooser = new GameChooser(this);
-
+        try {
+            SwingUtilities.invokeAndWait(() -> chooser = new GameChooser(this));
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (InvocationTargetException e) {
+            e.printStackTrace();
+        }
     }
 
     public Logic getLogic() {

@@ -43,28 +43,30 @@ public class MenuButton extends JButton {
                 repaint();
             }
         });
+        repaint();
     }
 
     @Override
     public void paintComponent(Graphics g) {
-
-        if (isMouseOver) {
-            g.setColor(getBackground());
-        } else {
-            g.setColor(new Color(0,0,0,0));
-        }
-
-
-        g.fillRect(1, 1, getWidth(), getHeight());
-        g.setColor(getForeground());
 
         Graphics2D g2 = (Graphics2D) g;
 
         HashMap<RenderingHints.Key, Object> keys = new HashMap<>();
         keys.put(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
         keys.put(RenderingHints.KEY_TEXT_ANTIALIASING, RenderingHints.VALUE_TEXT_ANTIALIAS_ON);
+        keys.put(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
 
         g2.addRenderingHints(keys);
+
+        if (isMouseOver) {
+            g2.setColor(getBackground());
+        } else {
+            g2.setColor(new Color(0,0,0,0));
+        }
+
+
+        g2.fillRect(1, 1, getWidth(), getHeight());
+        g2.setColor(getForeground());
 
         g2.setColor(this.getForeground());
         if (rightAligned) {
