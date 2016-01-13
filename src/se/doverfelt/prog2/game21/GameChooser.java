@@ -25,11 +25,7 @@ public class GameChooser extends JFrame {
     public GameChooser(Game21 game) {
         this.setUndecorated(true);
         this.game = game;
-        try {
-            splash = new ImageIcon(new URL("http", "www.psdgraphics.com", "/wp-content/uploads/2015/06/mosaic-background.png"));
-        } catch (MalformedURLException e) {
-            e.printStackTrace();
-        }
+        splash = new ImageIcon(GameChooser.class.getResource("bg.png"));
         //Makes the background become the label
         this.setContentPane(new JLabel(splash));
 
@@ -82,7 +78,12 @@ public class GameChooser extends JFrame {
         this.add(pvp, 16);
 
         this.setSize(splash.getIconWidth(), splash.getIconHeight());
-        this.repaint();
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
+
+        // Workaround for linux issues
+        this.setLocation(this.getLocation().x-1, this.getLocation().y-1);
+
         Thread t = new Thread(() -> {
             while (true) {
                 repaint();
@@ -94,8 +95,5 @@ public class GameChooser extends JFrame {
             }
         });
         t.start();
-        this.setLocationRelativeTo(null);
-        this.setVisible(true);
-
     }
 }
