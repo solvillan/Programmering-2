@@ -15,11 +15,13 @@ public class PVPLogic implements Logic {
     private int mod;
     private boolean won = false;
 
+    //Set the current modifier
     @Override
     public void setMod(int mod) {
         this.mod = mod;
     }
 
+    //Init the logic
     @Override
     public void init(BaseView view) {
         if (view instanceof PVPView) {
@@ -30,6 +32,7 @@ public class PVPLogic implements Logic {
         }
     }
 
+    //Update the score
     @Override
     public void update() {
         score += mod;

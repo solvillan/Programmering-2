@@ -18,11 +18,13 @@ public class EasyLogic implements Logic {
     private boolean won;
     private Random rand = new Random();
 
+    //Set the current modifier
     @Override
     public void setMod(int mod) {
         this.mod = mod;
     }
 
+    //Init the logic
     @Override
     public void init(BaseView view) {
         if (view instanceof EasyView) {
@@ -33,6 +35,7 @@ public class EasyLogic implements Logic {
         }
     }
 
+    //Do the player part
     private void doPlayer() {
         score += mod;
         view.label.setText("Computer");
@@ -40,6 +43,7 @@ public class EasyLogic implements Logic {
         view.update();
     }
 
+    //Do the computers choice
     public void doComputer(boolean isFirst) {
         mod = (Math.abs(rand.nextInt() % 2)) + 1;
         System.out.println(mod);
@@ -71,6 +75,7 @@ public class EasyLogic implements Logic {
         view.update();
     }
 
+    //Main logic loop
     @Override
     public void update() {
 

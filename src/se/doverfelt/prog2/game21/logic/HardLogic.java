@@ -16,13 +16,14 @@ public class HardLogic implements Logic {
     private int mod;
     private int score;
     private boolean won;
-    private Random rand = new Random();
 
+    //Set current modifier
     @Override
     public void setMod(int mod) {
         this.mod = mod;
     }
 
+    //Init the logic
     @Override
     public void init(BaseView view) {
         if (view instanceof HardView) {
@@ -33,6 +34,7 @@ public class HardLogic implements Logic {
         }
     }
 
+    // Process the players choice
     private void doPlayer() {
         score += mod;
         view.label.setText("Computer");
@@ -40,7 +42,9 @@ public class HardLogic implements Logic {
         view.update();
     }
 
+    //Computer algorithm
     public void doComputer(boolean isFirst) {
+        //Decide the best choice
         if (score % 3 == 1) {
             mod = 2;
         } else if (score % 3 == 2) {
@@ -76,12 +80,9 @@ public class HardLogic implements Logic {
             view.label.setText("Player");
         }
         score += mod;
-
-        //Do not remove! Updates graphics, should be last call in method
-        won = score >= 21;
-        view.update();
     }
 
+    //Main logic loop
     @Override
     public void update() {
 
@@ -90,6 +91,10 @@ public class HardLogic implements Logic {
         if (won) return;
 
         doComputer(false);
+
+        //Do not remove! Updates graphics, should be last call in method
+        won = score >= 21;
+        view.update();
 
     }
 

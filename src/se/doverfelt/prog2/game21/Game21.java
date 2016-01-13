@@ -21,6 +21,7 @@ public class Game21 {
     private Logic logic;
     public GameChooser chooser;
 
+    //Constructor - Init GameChooser
     public Game21() {
         try {
             SwingUtilities.invokeAndWait(() -> chooser = new GameChooser(this));
@@ -31,10 +32,12 @@ public class Game21 {
         }
     }
 
+    //Returns current logic
     public Logic getLogic() {
         return logic;
     }
 
+    //Starts the game
     public void startGame(EnumMode mode) {
         this.mode = mode;
         if (mode == EnumMode.COMP_EASY) {
@@ -50,6 +53,7 @@ public class Game21 {
 
     public static void main(String[] args) {
 
+        //Set the look and feel to the native one
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException e) {
@@ -62,6 +66,7 @@ public class Game21 {
             e.printStackTrace();
         }
 
+        //Initialize game
         new Game21();
     }
 

@@ -9,6 +9,8 @@ import javax.swing.*;
  * Author:      Rickard Doverfelt
  * Class:       TE21 / TI2
  */
+
+// Parent of all views (except GameView)
 public abstract class BaseView extends JPanel implements IView {
 
     public final GameView gameView;

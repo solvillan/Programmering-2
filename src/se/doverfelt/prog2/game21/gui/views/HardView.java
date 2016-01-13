@@ -20,6 +20,7 @@ public class HardView extends BaseView {
     public boolean isPlayer = true;
     private SwingWorker updater;
 
+    //Initialize the window
     public HardView(GameView gameView) {
         super(gameView);
 
@@ -76,6 +77,7 @@ public class HardView extends BaseView {
 
     }
 
+    //Update graphics
     @Override
     public void update() {
         System.out.println("UPDATE! " + isPlayer);

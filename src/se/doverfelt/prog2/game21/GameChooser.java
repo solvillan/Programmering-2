@@ -21,6 +21,7 @@ public class GameChooser extends JFrame {
     private ImageIcon splash;
     private Point point = new Point();
 
+    //Initialize all them graphics...
     public GameChooser(Game21 game) {
         this.setUndecorated(true);
         this.game = game;
@@ -29,8 +30,10 @@ public class GameChooser extends JFrame {
         } catch (MalformedURLException e) {
             e.printStackTrace();
         }
+        //Makes the background become the label
         this.setContentPane(new JLabel(splash));
 
+        //Moving the window
         GameChooser gameChooser = this;
         gameChooser.addMouseListener(new MouseAdapter() {
             public void mousePressed(MouseEvent e) {
@@ -45,6 +48,7 @@ public class GameChooser extends JFrame {
             }
         });
 
+        //Generating a grid of empty labels - spacing for the actual buttons
         this.setLayout(new GridLayout(5, 3));
         for (int i = 0; i < 15; i++) {
             this.add(new JLabel(""), i);

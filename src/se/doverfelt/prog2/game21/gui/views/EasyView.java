@@ -20,6 +20,7 @@ public class EasyView extends BaseView {
     public boolean isPlayer = true;
     private SwingWorker updater;
 
+    //Initialize the graphics
     public EasyView(GameView gameView) {
         super(gameView);
 
@@ -76,6 +77,7 @@ public class EasyView extends BaseView {
 
     }
 
+    //Update the graphics
     @Override
     public void update() {
         System.out.println("UPDATE! " + isPlayer);

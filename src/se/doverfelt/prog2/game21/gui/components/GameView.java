@@ -19,6 +19,7 @@ public class GameView extends JFrame{
     private BaseView mainView;
     public Game21 game;
 
+    //Initialize the window
     public GameView(EnumMode mode, Game21 game21) {
         this.mode = mode;
         this.game = game21;

@@ -17,6 +17,7 @@ public class PVPView extends BaseView {
     private JButton p11, p12, p21, p22;
     private boolean isPlayer1 = true;
 
+    //Initialize the window
     public PVPView(GameView gameView) {
         super(gameView);
 
@@ -81,6 +82,7 @@ public class PVPView extends BaseView {
 
     }
 
+    //Updates graphics
     @Override
     public void update() {
         p11.setEnabled(isPlayer1);

@@ -17,6 +17,7 @@ public class MenuButton extends JButton {
     private boolean isMouseOver = false;
     private boolean rightAligned;
 
+    //Initialize button
     public MenuButton(String label) {
         super("");
         this.label = label;
@@ -46,6 +47,7 @@ public class MenuButton extends JButton {
         repaint();
     }
 
+    //Custom rendering
     @Override
     public void paintComponent(Graphics g) {
 
