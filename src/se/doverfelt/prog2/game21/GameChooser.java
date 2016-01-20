@@ -66,7 +66,7 @@ public class GameChooser extends JFrame {
         hard = new MenuButton("Hard computer");
         hard.addActionListener(e -> {
             game.startGame(EnumMode.COMP_HARD);
-            this.setVisible(false);
+            GameChooser.this.setVisible(false);
         });
         this.add(hard, 12);
 
@@ -86,7 +86,7 @@ public class GameChooser extends JFrame {
 
         Thread t = new Thread(() -> {
             while (true) {
-                repaint();
+                GameChooser.this.repaint();
                 try {
                     Thread.sleep(100);
                 } catch (InterruptedException e) {
