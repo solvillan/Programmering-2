@@ -37,7 +37,7 @@ public class PVPLogic implements Logic {
     public void update() {
         score += mod;
 
-        won = score == 21;
+        won = score >= 21;
 
         //Do not remove! Updates graphics, should be last call in method
         view.update();
